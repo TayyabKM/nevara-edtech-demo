@@ -1,0 +1,44 @@
+[
+  {
+    "classId": "Grade 9A",
+    "teacher": "Mr. Usman",
+    "students": ["s1", "s2"],
+    "averageMastery": {
+      "Mathematics": 75,
+      "Physics": 74,
+      "Chemistry": 76,
+      "English": 81,
+      "Urdu": 87,
+      "Pakistan Studies": 76,
+      "Computer Science": 79
+    }
+  },
+  {
+    "classId": "Grade 9B",
+    "teacher": "Ms. Sana",
+    "students": ["s3"],
+    "averageMastery": {
+      "Mathematics": 45,
+      "Physics": 50,
+      "Chemistry": 40,
+      "English": 55,
+      "Urdu": 60,
+      "Pakistan Studies": 52,
+      "Computer Science": 48
+    }
+  },
+  {
+    "classId": "Grade 10A",
+    "teacher": "Mr. Bilal",
+    "students": ["s4", "s5"],
+    "averageMastery": {
+      "Mathematics": 85,
+      "Physics": 85,
+      "Chemistry": 84,
+      "English": 88,
+      "Urdu": 89,
+      "Pakistan Studies": 88,
+      "Computer Science": 87
+    }
+  }
+]

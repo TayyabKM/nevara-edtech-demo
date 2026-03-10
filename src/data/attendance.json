@@ -1,0 +1,22 @@
+[
+  {
+    "studentId": "s1",
+    "weeklyAttendance": [100, 100, 95, 100, 100, 90, 100, 100]
+  },
+  {
+    "studentId": "s2",
+    "weeklyAttendance": [80, 85, 90, 85, 80, 90, 85, 85]
+  },
+  {
+    "studentId": "s3",
+    "weeklyAttendance": [70, 75, 60, 65, 70, 80, 75, 65]
+  },
+  {
+    "studentId": "s4",
+    "weeklyAttendance": [100, 100, 100, 100, 100, 100, 100, 100]
+  },
+  {
+    "studentId": "s5",
+    "weeklyAttendance": [90, 85, 90, 85, 90, 85, 90, 85]
+  }
+]

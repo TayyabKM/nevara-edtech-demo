@@ -1,0 +1,97 @@
+[
+  {
+    "id": "s1",
+    "name": "Ali Khan",
+    "class": "Grade 9A",
+    "grade": "9",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "English", "Urdu", "Pakistan Studies", "Computer Science"],
+    "masteryScores": {
+      "Mathematics": 85,
+      "Physics": 78,
+      "Chemistry": 92,
+      "English": 88,
+      "Urdu": 95,
+      "Pakistan Studies": 80,
+      "Computer Science": 90
+    },
+    "riskLevel": "on-track",
+    "attendancePercent": 98,
+    "recentAssessments": ["a1", "a2"]
+  },
+  {
+    "id": "s2",
+    "name": "Fatima Ahmed",
+    "class": "Grade 9A",
+    "grade": "9",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "English", "Urdu", "Pakistan Studies", "Computer Science"],
+    "masteryScores": {
+      "Mathematics": 65,
+      "Physics": 70,
+      "Chemistry": 60,
+      "English": 75,
+      "Urdu": 80,
+      "Pakistan Studies": 72,
+      "Computer Science": 68
+    },
+    "riskLevel": "needs-attention",
+    "attendancePercent": 85,
+    "recentAssessments": ["a3"]
+  },
+  {
+    "id": "s3",
+    "name": "Zainab Malik",
+    "class": "Grade 9B",
+    "grade": "9",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "English", "Urdu", "Pakistan Studies", "Computer Science"],
+    "masteryScores": {
+      "Mathematics": 45,
+      "Physics": 50,
+      "Chemistry": 40,
+      "English": 55,
+      "Urdu": 60,
+      "Pakistan Studies": 52,
+      "Computer Science": 48
+    },
+    "riskLevel": "at-risk",
+    "attendancePercent": 70,
+    "recentAssessments": ["a4"]
+  },
+  {
+    "id": "s4",
+    "name": "Omar Farooq",
+    "class": "Grade 10A",
+    "grade": "10",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "English", "Urdu", "Pakistan Studies", "Computer Science"],
+    "masteryScores": {
+      "Mathematics": 95,
+      "Physics": 90,
+      "Chemistry": 98,
+      "English": 92,
+      "Urdu": 88,
+      "Pakistan Studies": 94,
+      "Computer Science": 96
+    },
+    "riskLevel": "on-track",
+    "attendancePercent": 100,
+    "recentAssessments": ["a5"]
+  },
+  {
+    "id": "s5",
+    "name": "Ayesha Tariq",
+    "class": "Grade 10A",
+    "grade": "10",
+    "subjects": ["Mathematics", "Physics", "Chemistry", "English", "Urdu", "Pakistan Studies", "Computer Science"],
+    "masteryScores": {
+      "Mathematics": 75,
+      "Physics": 80,
+      "Chemistry": 70,
+      "English": 85,
+      "Urdu": 90,
+      "Pakistan Studies": 82,
+      "Computer Science": 78
+    },
+    "riskLevel": "needs-attention",
+    "attendancePercent": 88,
+    "recentAssessments": ["a6"]
+  }
+]

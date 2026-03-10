@@ -1,0 +1,68 @@
+[
+  {
+    "id": "a1",
+    "studentId": "s1",
+    "subject": "Physics",
+    "question": "Explain Newton's First Law of Motion.",
+    "studentAnswer": "An object at rest stays at rest and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.",
+    "aiScore": 9,
+    "aiFeedback": "Excellent understanding of the concept. You included all key parts of the law.",
+    "teacherOverride": null,
+    "date": "2026-03-01"
+  },
+  {
+    "id": "a2",
+    "studentId": "s1",
+    "subject": "Mathematics",
+    "question": "Solve for x: 2x + 5 = 15",
+    "studentAnswer": "2x = 10, so x = 5.",
+    "aiScore": 10,
+    "aiFeedback": "Perfect step-by-step solution.",
+    "teacherOverride": null,
+    "date": "2026-03-05"
+  },
+  {
+    "id": "a3",
+    "studentId": "s2",
+    "subject": "Chemistry",
+    "question": "What is an isotope?",
+    "studentAnswer": "It's a different version of an element.",
+    "aiScore": 4,
+    "aiFeedback": "Incomplete. You need to mention that isotopes have the same number of protons but different numbers of neutrons.",
+    "teacherOverride": 5,
+    "date": "2026-03-02"
+  },
+  {
+    "id": "a4",
+    "studentId": "s3",
+    "subject": "English",
+    "question": "Write a sentence using a metaphor.",
+    "studentAnswer": "The sun is like a yellow ball.",
+    "aiScore": 3,
+    "aiFeedback": "This is a simile, not a metaphor. A metaphor states that one thing IS another thing.",
+    "teacherOverride": null,
+    "date": "2026-03-04"
+  },
+  {
+    "id": "a5",
+    "studentId": "s4",
+    "subject": "Computer Science",
+    "question": "What is the difference between RAM and ROM?",
+    "studentAnswer": "RAM is volatile memory used for temporary storage while the computer is running. ROM is non-volatile memory that stores permanent instructions like the BIOS.",
+    "aiScore": 10,
+    "aiFeedback": "Spot on. Clear and accurate distinction.",
+    "teacherOverride": null,
+    "date": "2026-03-06"
+  },
+  {
+    "id": "a6",
+    "studentId": "s5",
+    "subject": "Pakistan Studies",
+    "question": "When was the Lahore Resolution passed?",
+    "studentAnswer": "March 23, 1940.",
+    "aiScore": 10,
+    "aiFeedback": "Correct date.",
+    "teacherOverride": null,
+    "date": "2026-03-07"
+  }
+]
