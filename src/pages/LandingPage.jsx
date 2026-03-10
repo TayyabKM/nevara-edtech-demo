@@ -49,7 +49,7 @@ export function LandingPage() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="flex items-center justify-between p-6 bg-white shadow-sm">
         <div className="flex items-center gap-3">
-          <img src={schoolConfig.logo} alt="Logo" className="h-10 w-10 rounded-md" />
+          {/* <img src={schoolConfig.logo} alt="Logo" className="h-10 w-10 rounded-md" /> */}
           <span className="text-2xl font-bold" style={{ color: schoolConfig.primaryColor }}>
             {schoolConfig.name}
           </span>
@@ -76,6 +76,29 @@ export function LandingPage() {
             <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
               Request a Meeting
             </Button>
+          </div>
+        </section>
+
+        <section className="py-16 px-6 bg-[#006B6B] text-white text-center">
+          <div className="max-w-5xl mx-auto flex flex-col items-center">
+            <h2 className="text-3xl font-bold mb-8">Built for Enterprise. Designed for Every Learner.</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-8 divide-y md:divide-y-0 md:divide-x divide-white/20">
+              <div className="pt-4 md:pt-0">
+                <div className="text-4xl font-extrabold mb-2">20,000+</div>
+                <div className="text-lg text-white/90 font-medium">Students Supported</div>
+              </div>
+              <div className="pt-4 md:pt-0">
+                <div className="text-4xl font-extrabold mb-2">8</div>
+                <div className="text-lg text-white/90 font-medium">Integrated Modules</div>
+              </div>
+              <div className="pt-4 md:pt-0">
+                <div className="text-4xl font-extrabold mb-2">AI-Powered</div>
+                <div className="text-lg text-white/90 font-medium">Across Every Role</div>
+              </div>
+            </div>
+            <p className="text-lg text-white/90 max-w-3xl leading-relaxed">
+              EduOS is a fully proprietary, white-label educational ecosystem — built to institutional standards with enterprise security, role-based access, and AI at its core.
+            </p>
           </div>
         </section>
 

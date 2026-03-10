@@ -14,7 +14,9 @@ import {
   Settings,
   Database,
   User,
-  Bell
+  Bell,
+  Mic,
+  Rocket
 } from "lucide-react"
 
 const roleLinks = {
@@ -25,6 +27,8 @@ const roleLinks = {
     { name: "Mock Exams", href: "/student/mock-exams", icon: FileText, comingSoon: true },
     { name: "My Portfolio", href: "/student/portfolio", icon: Briefcase, comingSoon: true },
     { name: "Chatbot", href: "/student/chatbot", icon: MessageSquare, comingSoon: true },
+    { name: "Public Speaking Lab", href: "/student/public-speaking", icon: Mic, comingSoon: true },
+    { name: "Billionaire Bootcamp", href: "/student/billionaire-bootcamp", icon: Rocket, comingSoon: true },
   ],
   teacher: [
     { name: "Dashboard", href: "/teacher/dashboard", icon: LayoutDashboard },
@@ -62,8 +66,7 @@ export function Sidebar({ role }) {
   return (
     <div className="flex h-full w-64 flex-col border-r bg-[#006B6B]">
       <div className="flex h-16 items-center border-b border-white/10 px-6">
-        <img src={schoolConfig.logo} alt="Logo" className="h-8 w-8 mr-3 rounded-md" />
-        <span className="font-bold text-white">{schoolConfig.shortName}</span>
+        <span className="font-bold text-white text-xl">{schoolConfig.shortName}</span>
       </div>
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="grid gap-1 px-2">

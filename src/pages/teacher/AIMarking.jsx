@@ -53,7 +53,7 @@ export function TeacherAIMarking() {
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-medium mb-1 block">Subject</label>
-                <select 
+                <select
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   value={aiMarkingState.subject}
                   onChange={(e) => setAiMarkingState(prev => ({ ...prev, subject: e.target.value }))}
@@ -63,7 +63,7 @@ export function TeacherAIMarking() {
               </div>
               <div>
                 <label className="text-sm font-medium mb-1 block">Question</label>
-                <Textarea 
+                <Textarea
                   value={aiMarkingState.question}
                   onChange={(e) => setAiMarkingState(prev => ({ ...prev, question: e.target.value }))}
                   placeholder="Enter Question"
@@ -72,7 +72,7 @@ export function TeacherAIMarking() {
               </div>
               <div>
                 <label className="text-sm font-medium mb-1 block">Student Answer</label>
-                <Textarea 
+                <Textarea
                   value={aiMarkingState.studentAnswer}
                   onChange={(e) => setAiMarkingState(prev => ({ ...prev, studentAnswer: e.target.value }))}
                   placeholder="Paste Student Answer"
@@ -81,15 +81,15 @@ export function TeacherAIMarking() {
               </div>
               <div>
                 <label className="text-sm font-medium mb-1 block">Total Marks</label>
-                <Input 
-                  type="number" 
+                <Input
+                  type="number"
                   value={aiMarkingState.marksOutOf}
                   onChange={(e) => setAiMarkingState(prev => ({ ...prev, marksOutOf: e.target.value }))}
                   placeholder="e.g. 10"
                 />
               </div>
-              <Button 
-                onClick={handleMarkWithAI} 
+              <Button
+                onClick={handleMarkWithAI}
                 disabled={aiMarkingState.loading || !aiMarkingState.question || !aiMarkingState.studentAnswer}
                 className="w-full"
               >
@@ -103,7 +103,7 @@ export function TeacherAIMarking() {
 
             <div className="bg-gray-50 rounded-lg border p-6 flex flex-col">
               <h3 className="text-lg font-semibold mb-4 border-b pb-2">AI Assessment Result</h3>
-              
+
               {aiMarkingState.loading && (
                 <div className="flex-1 flex flex-col items-center justify-center text-gray-500">
                   <Loader2 className="h-8 w-8 animate-spin mb-4 text-[var(--primary-color)]" />
@@ -179,6 +179,24 @@ export function TeacherAIMarking() {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+
+          <div className="mt-8 border-l-4 p-6 rounded-r-lg" style={{ borderColor: '#006B6B', backgroundColor: '#E6F4F4' }}>
+            <h3 className="text-lg font-bold text-[#006B6B] mb-4">🚀 This Feature Is Expanding</h3>
+            <div className="grid gap-6 md:grid-cols-3">
+              <div>
+                <h4 className="font-semibold text-[#006B6B] text-sm mb-2">Phase 2 — Bulk Paper Upload</h4>
+                <p className="text-sm text-gray-700">Teachers upload a full set of student answer papers (PDF or image). The AI reads, marks, and grades every paper automatically — no manual input required.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[#006B6B] text-sm mb-2">Phase 3 — Platform-Integrated Auto-Marking</h4>
+                <p className="text-sm text-gray-700">When students complete assessments directly on the platform, AI marks their answers instantly. Results appear in the gradebook without any teacher action.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-[#006B6B] text-sm mb-2">Phase 4 — Exam Board Alignment</h4>
+                <p className="text-sm text-gray-700">Marking rubrics calibrated against O-Level, A-Level, Matric, and IGCSE board standards for each subject.</p>
+              </div>
             </div>
           </div>
         </CardContent>

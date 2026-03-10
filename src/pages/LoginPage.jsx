@@ -24,8 +24,8 @@ export function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
       <Card className="w-full max-w-3xl shadow-xl border-t-4" style={{ borderTopColor: schoolConfig.primaryColor }}>
         <CardHeader className="text-center pb-8">
-          <div className="mx-auto mb-4 h-16 w-16 rounded-xl overflow-hidden shadow-sm">
-            <img src={schoolConfig.logo} alt="Logo" className="h-full w-full object-cover" />
+          <div className="mx-auto mb-4 h-16 w-16 rounded-xl overflow-hidden shadow-sm hidden">
+            {/* <img src={schoolConfig.logo} alt="Logo" className="h-full w-full object-cover" /> */}
           </div>
           <CardTitle className="text-3xl font-bold" style={{ color: schoolConfig.primaryColor }}>
             Select Your Role
@@ -42,7 +42,7 @@ export function LoginPage() {
                 onClick={() => handleRoleSelect(role.id)}
                 className="flex flex-col items-center p-6 rounded-xl border-2 border-transparent bg-white shadow-sm hover:border-[var(--primary-color)] hover:shadow-md transition-all text-left group"
               >
-                <div 
+                <div
                   className="h-14 w-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
                   style={{ backgroundColor: `${schoolConfig.primaryColor}15`, color: schoolConfig.primaryColor }}
                 >
