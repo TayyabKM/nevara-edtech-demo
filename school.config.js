@@ -1,10 +1,10 @@
 export const schoolConfig = {
-  name: "Roots International Education Network",
-  shortName: "RIEN",
-  logo: "https://picsum.photos/seed/rienlogo/100/100",
-  primaryColor: "#1B2A4A",
-  accentColor: "#C9A84C",
-  city: "Lahore",
+  name: "Roots International Schools & Colleges",
+  shortName: "RISC",
+  logo: "https://www.rootsinternational.edu.pk/wp-content/uploads/2023/03/ROOTS-WHITE-LOGO-01.png",
+  primaryColor: "#008080",
+  accentColor: "#00A693",
+  city: "Islamabad",
   country: "Pakistan",
-  tagline: "Empowering Every Learner"
+  tagline: "Excellence In Education Since 1988"
 };

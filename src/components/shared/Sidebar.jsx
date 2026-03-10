@@ -2,16 +2,16 @@ import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import { cn } from "@/src/lib/utils"
 import { schoolConfig } from "@/school.config"
-import { 
-  LayoutDashboard, 
-  BookOpen, 
-  FileText, 
-  MessageSquare, 
-  Briefcase, 
-  Users, 
-  AlertTriangle, 
-  BarChart, 
-  Settings, 
+import {
+  LayoutDashboard,
+  BookOpen,
+  FileText,
+  MessageSquare,
+  Briefcase,
+  Users,
+  AlertTriangle,
+  BarChart,
+  Settings,
   Database,
   User,
   Bell
@@ -60,7 +60,7 @@ export function Sidebar({ role }) {
   const links = roleLinks[role] || []
 
   return (
-    <div className="flex h-full w-64 flex-col border-r bg-[#1B2A4A]">
+    <div className="flex h-full w-64 flex-col border-r bg-[#006B6B]">
       <div className="flex h-16 items-center border-b border-white/10 px-6">
         <img src={schoolConfig.logo} alt="Logo" className="h-8 w-8 mr-3 rounded-md" />
         <span className="font-bold text-white">{schoolConfig.shortName}</span>
@@ -75,8 +75,8 @@ export function Sidebar({ role }) {
                 to={link.comingSoon ? `/coming-soon?feature=${encodeURIComponent(link.name)}` : link.href}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all",
-                  isActive 
-                    ? "bg-[#C9A84C] text-white" 
+                  isActive
+                    ? "bg-[#00A693] text-white"
                     : "text-gray-300 hover:bg-white/10 hover:text-white"
                 )}
               >

@@ -4,3 +4,7 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
