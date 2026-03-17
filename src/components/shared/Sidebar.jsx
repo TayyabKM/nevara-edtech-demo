@@ -16,13 +16,17 @@ import {
   User,
   Bell,
   Mic,
-  Rocket
+  Rocket,
+  Gamepad2,
+  BookMarked,
+  ClipboardCheck
 } from "lucide-react"
 
 const roleLinks = {
   student: [
     { name: "Dashboard", href: "/student/dashboard", icon: LayoutDashboard },
     { name: "My Subjects", href: "/student/subjects", icon: BookOpen },
+    { name: "Learning Games", href: "/student/learning-games", icon: Gamepad2, comingSoon: true },
     { name: "Assessments", href: "/student/assessments", icon: FileText },
     { name: "Mock Exams", href: "/student/mock-exams", icon: FileText, comingSoon: true },
     { name: "My Portfolio", href: "/student/portfolio", icon: Briefcase, comingSoon: true },
@@ -34,6 +38,7 @@ const roleLinks = {
     { name: "Dashboard", href: "/teacher/dashboard", icon: LayoutDashboard },
     { name: "My Classes", href: "/teacher/classes", icon: Users },
     { name: "AI Marking Tool", href: "/teacher/ai-marking", icon: FileText },
+    { name: "Board Repository", href: "/teacher/board-repository", icon: BookMarked, comingSoon: true },
     { name: "Question Bank", href: "/teacher/question-bank", icon: Database, comingSoon: true },
     { name: "Reports", href: "/teacher/reports", icon: BarChart },
   ],
@@ -41,6 +46,7 @@ const roleLinks = {
     { name: "Dashboard", href: "/campus/dashboard", icon: LayoutDashboard },
     { name: "Classes", href: "/campus/classes", icon: Users },
     { name: "Teachers", href: "/campus/teachers", icon: User },
+    { name: "Board Repository", href: "/campus/board-repository", icon: BookMarked, comingSoon: true },
     { name: "Risk Monitor", href: "/campus/risk-monitor", icon: AlertTriangle },
     { name: "Reports", href: "/campus/reports", icon: BarChart, comingSoon: true },
   ],
@@ -53,6 +59,7 @@ const roleLinks = {
   ],
   admin: [
     { name: "Executive Dashboard", href: "/admin/executive", icon: LayoutDashboard },
+    { name: "Exam Board Compliance", href: "/admin/exam-board", icon: ClipboardCheck, comingSoon: true },
     { name: "Branding", href: "/admin", icon: Settings },
     { name: "Users", href: "/admin/users", icon: Users, comingSoon: true },
     { name: "Data", href: "/admin/data", icon: Database },
