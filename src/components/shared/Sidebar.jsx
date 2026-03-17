@@ -52,6 +52,7 @@ const roleLinks = {
     { name: "Messages", href: "/parent/messages", icon: MessageSquare, comingSoon: true },
   ],
   admin: [
+    { name: "Executive Dashboard", href: "/admin/executive", icon: LayoutDashboard },
     { name: "Branding", href: "/admin", icon: Settings },
     { name: "Users", href: "/admin/users", icon: Users, comingSoon: true },
     { name: "Data", href: "/admin/data", icon: Database },

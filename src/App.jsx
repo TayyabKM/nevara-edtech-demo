@@ -19,6 +19,7 @@ import { ParentAcademicProgress } from "./pages/parent/AcademicProgress"
 import { ParentAttendance } from "./pages/parent/Attendance"
 import { ParentAlerts } from "./pages/parent/Alerts"
 import { AdminPanel } from "./pages/AdminPanel"
+import { ExecutiveDashboard } from "./pages/admin/ExecutiveDashboard"
 import { AdminData } from "./pages/admin/Data"
 import { AdminSystem } from "./pages/admin/System"
 import { ComingSoonPage } from "./pages/ComingSoonPage"
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="parent/alerts" element={<ParentAlerts />} />
           
           <Route path="admin" element={<AdminPanel />} />
+          <Route path="admin/executive" element={<ExecutiveDashboard />} />
           <Route path="admin/data" element={<AdminData />} />
           <Route path="admin/system" element={<AdminSystem />} />
           
