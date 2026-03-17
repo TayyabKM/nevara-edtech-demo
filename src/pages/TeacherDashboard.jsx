@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/src/components/ui/card"
 import { StatCard } from "@/src/components/shared/StatCard"
 import { RiskBadge } from "@/src/components/shared/RiskBadge"
+import { FeatureTooltip } from "@/src/components/shared/FeatureTooltip"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import { Textarea } from "@/src/components/ui/textarea"
@@ -67,74 +68,95 @@ export function TeacherDashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>Class Performance</CardTitle>
-            <CardDescription>Average mastery per subject across classes</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={classPerformanceData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis domain={[0, 100]} />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="Physics" fill="var(--primary-color)" />
-                <Bar dataKey="Mathematics" fill="var(--accent-color)" />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <FeatureTooltip
+          title="Class Performance Analytics"
+          description="In the full platform this updates live — every assessment submission recalculates class averages and surfaces which topics need immediate reteaching."
+          benefits={["Live recalculation after every submission", "Drill down from class to individual student", "Exportable reports for campus head review"]}
+          className="col-span-1"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Class Performance</CardTitle>
+              <CardDescription>Average mastery per subject across classes</CardDescription>
+            </CardHeader>
+            <CardContent className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={classPerformanceData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis domain={[0, 100]} />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="Physics" fill="var(--primary-color)" />
+                  <Bar dataKey="Mathematics" fill="var(--accent-color)" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </FeatureTooltip>
 
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>At-Risk Students</CardTitle>
-            <CardDescription>Students requiring immediate intervention</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                  <tr>
-                    <th className="px-4 py-3">Name</th>
-                    <th className="px-4 py-3">Class</th>
-                    <th className="px-4 py-3">Status</th>
-                    <th className="px-4 py-3">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {atRiskStudents.map((student) => (
-                    <tr key={student.id} className="border-b hover:bg-gray-50">
-                      <td className="px-4 py-3 font-medium text-gray-900">{student.name}</td>
-                      <td className="px-4 py-3">{student.class}</td>
-                      <td className="px-4 py-3">
-                        <RiskBadge level={student.riskLevel} />
-                      </td>
-                      <td className="px-4 py-3">
-                        <Button variant="outline" size="sm">Message</Button>
-                      </td>
+        <FeatureTooltip
+          title="Predictive Risk Engine"
+          description="The full risk model analyses attendance patterns, assessment scores, submission rates and engagement signals to predict which students are heading toward failure — weeks before it happens."
+          benefits={["Early warning 4 to 6 weeks before failure", "Automated alerts sent to teachers and parents", "Intervention workflow built in"]}
+          align="right"
+          className="col-span-1"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>At-Risk Students</CardTitle>
+              <CardDescription>Students requiring immediate intervention</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-3">Name</th>
+                      <th className="px-4 py-3">Class</th>
+                      <th className="px-4 py-3">Status</th>
+                      <th className="px-4 py-3">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
+                  </thead>
+                  <tbody>
+                    {atRiskStudents.map((student) => (
+                      <tr key={student.id} className="border-b hover:bg-gray-50">
+                        <td className="px-4 py-3 font-medium text-gray-900">{student.name}</td>
+                        <td className="px-4 py-3">{student.class}</td>
+                        <td className="px-4 py-3">
+                          <RiskBadge level={student.riskLevel} />
+                        </td>
+                        <td className="px-4 py-3">
+                          <Button variant="outline" size="sm">Message</Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </FeatureTooltip>
       </div>
 
       <Card className="border-t-4 border-t-[var(--accent-color)] shadow-md">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <div className="p-2 bg-blue-100 text-blue-800 rounded-lg">
-              <FileText className="h-5 w-5" />
+        <FeatureTooltip
+          title="AI Marking — Full Platform Capabilities"
+          description="This demo shows single-answer marking. The full platform includes bulk paper upload, platform-integrated auto-marking for mock exams, and board-aligned rubrics for O-Level, A-Level, Matric and IGCSE."
+          benefits={["Bulk PDF upload — mark entire class in one click", "Auto-marks platform mock exams instantly", "Board-calibrated rubrics per subject"]}
+        >
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <div className="p-2 bg-blue-100 text-blue-800 rounded-lg">
+                <FileText className="h-5 w-5" />
+              </div>
+              <div>
+                <CardTitle>AI Marking Tool</CardTitle>
+                <CardDescription>Powered by Google Gemini</CardDescription>
+              </div>
             </div>
-            <div>
-              <CardTitle>AI Marking Tool</CardTitle>
-              <CardDescription>Powered by Google Gemini</CardDescription>
-            </div>
-          </div>
-        </CardHeader>
+          </CardHeader>
+        </FeatureTooltip>
         <CardContent>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-4">

@@ -2,6 +2,7 @@ import React from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/src/components/ui/card"
 import { StatCard } from "@/src/components/shared/StatCard"
 import { RiskBadge } from "@/src/components/shared/RiskBadge"
+import { FeatureTooltip } from "@/src/components/shared/FeatureTooltip"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from "recharts"
 import studentsData from "@/src/data/students.json"
 import classesData from "@/src/data/classes.json"
@@ -66,72 +67,87 @@ export function CampusDashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <Card className="col-span-2">
-          <CardHeader>
-            <CardTitle>Subject Performance Heatmap</CardTitle>
-            <CardDescription>Average mastery score per class and subject</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-center">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                  <tr>
-                    <th className="px-4 py-3 text-left">Class</th>
-                    {subjectsData.map(subject => (
-                      <th key={subject} className="px-2 py-3 truncate max-w-[80px]" title={subject}>
-                        {subject.substring(0, 4)}.
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {classesData.map((cls) => (
-                    <tr key={cls.classId} className="border-b">
-                      <td className="px-4 py-3 font-medium text-gray-900 text-left">{cls.classId}</td>
-                      {subjectsData.map(subject => {
-                        const score = cls.averageMastery[subject] || 0
-                        return (
-                          <td key={subject} className="px-2 py-2">
-                            <div className={`px-2 py-1 rounded text-xs font-semibold ${getHeatmapColor(score)}`}>
-                              {score}%
-                            </div>
-                          </td>
-                        )
-                      })}
+        <FeatureTooltip
+          title="Subject Performance Heatmap"
+          description="In the full platform this heatmap covers every class, every subject, and every concept — updated live as assessments come in. Campus heads can drill down from campus level to individual student level in one click."
+          benefits={["Live data — not monthly reports", "Drill down: Campus → Grade → Class → Student", "Automatic alerts when any cell drops below threshold"]}
+          className="col-span-2"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Subject Performance Heatmap</CardTitle>
+              <CardDescription>Average mastery score per class and subject</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-center">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-3 text-left">Class</th>
+                      {subjectsData.map(subject => (
+                        <th key={subject} className="px-2 py-3 truncate max-w-[80px]" title={subject}>
+                          {subject.substring(0, 4)}.
+                        </th>
+                      ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
+                  </thead>
+                  <tbody>
+                    {classesData.map((cls) => (
+                      <tr key={cls.classId} className="border-b">
+                        <td className="px-4 py-3 font-medium text-gray-900 text-left">{cls.classId}</td>
+                        {subjectsData.map(subject => {
+                          const score = cls.averageMastery[subject] || 0
+                          return (
+                            <td key={subject} className="px-2 py-2">
+                              <div className={`px-2 py-1 rounded text-xs font-semibold ${getHeatmapColor(score)}`}>
+                                {score}%
+                              </div>
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </FeatureTooltip>
 
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>Risk Distribution</CardTitle>
-          </CardHeader>
-          <CardContent className="h-[300px] flex flex-col items-center justify-center">
-            <ResponsiveContainer width="100%" height="80%">
-              <PieChart>
-                <Pie
-                  data={riskDistribution}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
-                  paddingAngle={5}
-                  dataKey="value"
-                >
-                  {riskDistribution.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend verticalAlign="bottom" height={36}/>
-              </PieChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <FeatureTooltip
+          title="Network-Wide Risk Monitoring"
+          description="In the full platform this donut updates in real time and covers all 47 campuses. One click on any segment shows the full list of affected students with recommended interventions."
+          benefits={["Real time across all campuses", "Clickable — drill into any risk segment", "Intervention workflow triggered automatically"]}
+          align="right"
+          className="col-span-1"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Risk Distribution</CardTitle>
+            </CardHeader>
+            <CardContent className="h-[300px] flex flex-col items-center justify-center">
+              <ResponsiveContainer width="100%" height="80%">
+                <PieChart>
+                  <Pie
+                    data={riskDistribution}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={80}
+                    paddingAngle={5}
+                    dataKey="value"
+                  >
+                    {riskDistribution.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend verticalAlign="bottom" height={36}/>
+                </PieChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </FeatureTooltip>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -165,23 +181,31 @@ export function CampusDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>Teacher Performance Comparison</CardTitle>
-            <CardDescription>Average student mastery by teacher</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={teacherPerformanceData} layout="vertical" margin={{ left: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
-                <XAxis type="number" domain={[0, 100]} />
-                <YAxis dataKey="name" type="category" width={80} />
-                <Tooltip />
-                <Bar dataKey="score" fill="var(--primary-color)" radius={[0, 4, 4, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <FeatureTooltip
+          title="Teacher Performance Intelligence"
+          description="The full system tracks lesson plan completion, assessment turnaround time, AI marking adoption, and student outcome correlation per teacher — giving campus heads objective performance data."
+          benefits={["Objective data replaces subjective observation", "Tracks AI tool adoption rates per teacher", "Feeds into professional development planning"]}
+          align="right"
+          className="col-span-1"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Teacher Performance Comparison</CardTitle>
+              <CardDescription>Average student mastery by teacher</CardDescription>
+            </CardHeader>
+            <CardContent className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={teacherPerformanceData} layout="vertical" margin={{ left: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                  <XAxis type="number" domain={[0, 100]} />
+                  <YAxis dataKey="name" type="category" width={80} />
+                  <Tooltip />
+                  <Bar dataKey="score" fill="var(--primary-color)" radius={[0, 4, 4, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </FeatureTooltip>
       </div>
     </div>
   )
