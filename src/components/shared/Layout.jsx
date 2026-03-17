@@ -33,11 +33,15 @@ export function Layout() {
   }
 
   return (
-    <div className="flex h-screen w-full bg-gray-50 overflow-hidden">
-      <Sidebar role={role} />
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <TopBar userName={userNameMap[role] || "User"} role={role} />
-        <main className="flex-1 overflow-y-auto p-6">
+    <div className="flex min-h-screen w-full bg-gray-50">
+      <div className="sticky top-0 h-screen flex-none z-50 shadow-[4px_0_10px_rgba(0,0,0,0.05)]">
+        <Sidebar role={role} />
+      </div>
+      <div className="flex flex-1 flex-col min-w-0 relative">
+        <div className="sticky top-0 z-40">
+          <TopBar userName={userNameMap[role] || "User"} role={role} />
+        </div>
+        <main className="flex-1 p-6">
           <Outlet />
         </main>
       </div>

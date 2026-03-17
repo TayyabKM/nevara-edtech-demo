@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { StatCard } from "@/src/components/shared/StatCard"
 import { RiskBadge } from "@/src/components/shared/RiskBadge"
+import { FeatureTooltip } from "@/src/components/shared/FeatureTooltip"
 import { 
   Building, Users, GraduationCap, TrendingUp, BookOpen, Clock, AlertTriangle, Activity, DollarSign, BrainCircuit
 } from "lucide-react"
@@ -151,24 +152,30 @@ export function ExecutiveDashboard() {
       {/* Row 2 — Academic Insights */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Component 1 — Campus Performance Ranking */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Campus Performance Ranking</h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={campusPerformanceData} layout="vertical" margin={{ top: 0, right: 0, left: 30, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                <XAxis type="number" domain={[0, 100]} />
-                <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
-                <RechartsTooltip />
-                <Bar dataKey="score" radius={[0, 4, 4, 0]}>
-                  {campusPerformanceData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.fill} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+        <FeatureTooltip
+          title="Multi-Campus Benchmarking"
+          description="The full system ranks all 47 campuses across 15 performance dimensions — academic scores, attendance, fee collection, teacher performance, and student satisfaction — updated weekly."
+          benefits={["47 campuses ranked on 15 dimensions", "Year-over-year trend comparison", "Exportable for board presentations"]}
+        >
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-full">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Campus Performance Ranking</h3>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={campusPerformanceData} layout="vertical" margin={{ top: 0, right: 0, left: 30, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                  <XAxis type="number" domain={[0, 100]} />
+                  <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
+                  <RechartsTooltip />
+                  <Bar dataKey="score" radius={[0, 4, 4, 0]}>
+                    {campusPerformanceData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.fill} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-        </div>
+        </FeatureTooltip>
 
         {/* Component 2 — Subject Performance */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
@@ -234,29 +241,35 @@ export function ExecutiveDashboard() {
       </div>
 
       {/* Row 3 — AI Insights Panel */}
-      <div className="bg-[#E6F4F4] rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-[#006B6B] overflow-hidden">
-        <div className="px-6 py-4 flex justify-between items-center border-b border-[#006B6B]/10">
-          <h3 className="text-lg font-bold text-gray-900">🤖 AI Insights — Generated Today</h3>
-          <span className="text-xs font-medium bg-white px-2 py-1 rounded-full text-[#006B6B] shadow-sm border border-[#006B6B]/20">
-            Powered by EduOS Intelligence
-          </span>
-        </div>
-        <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {aiInsights.map((insight, index) => (
-              <div key={index} className={`bg-white p-4 rounded-lg shadow-sm border-l-4 ${insight.colorClass}`}>
-                <div className="flex items-start gap-3">
-                  <div className="text-xl shrink-0">{insight.icon}</div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-sm mb-1">{insight.title}</h4>
-                    <p className="text-xs text-gray-600">{insight.detail}</p>
+      <FeatureTooltip
+        title="EduOS Intelligence Engine"
+        description="In the full platform the AI Insights panel generates fresh analysis every morning using data from all 47 campuses — flagging anomalies, predicting risks, and recommending actions before leadership even opens their dashboard."
+        benefits={["Daily AI-generated institutional briefing", "Anomaly detection across all campuses", "Recommended actions with one-click escalation"]}
+      >
+        <div className="bg-[#E6F4F4] rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-[#006B6B] overflow-hidden">
+          <div className="px-6 py-4 flex justify-between items-center border-b border-[#006B6B]/10">
+            <h3 className="text-lg font-bold text-gray-900">🤖 AI Insights — Generated Today</h3>
+            <span className="text-xs font-medium bg-white px-2 py-1 rounded-full text-[#006B6B] shadow-sm border border-[#006B6B]/20">
+              Powered by EduOS Intelligence
+            </span>
+          </div>
+          <div className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {aiInsights.map((insight, index) => (
+                <div key={index} className={`bg-white p-4 rounded-lg shadow-sm border-l-4 ${insight.colorClass}`}>
+                  <div className="flex items-start gap-3">
+                    <div className="text-xl shrink-0">{insight.icon}</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 text-sm mb-1">{insight.title}</h4>
+                      <p className="text-xs text-gray-600">{insight.detail}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </FeatureTooltip>
 
       {/* Row 4 — Admissions & Enrollment */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">

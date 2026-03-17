@@ -1,6 +1,8 @@
 import React from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/src/components/ui/card"
+import { StatCard } from "@/src/components/shared/StatCard"
 import { RiskBadge } from "@/src/components/shared/RiskBadge"
+import { FeatureTooltip } from "@/src/components/shared/FeatureTooltip"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts"
 import studentsData from "@/src/data/students.json"
 import assessmentsData from "@/src/data/assessments.json"
@@ -64,29 +66,36 @@ export function ParentDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-2">
-          <CardHeader>
-            <CardTitle>Subject Mastery Progress</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {Object.entries(child.masteryScores).map(([subject, score]) => (
-                <div key={subject}>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="font-medium">{subject}</span>
-                    <span className="text-gray-500">{score}%</span>
+        <FeatureTooltip
+          title="Live Academic Tracking"
+          description="In the full platform parents see mastery scores update within minutes of their child completing any assessment or learning activity — not just at report card time."
+          benefits={["Updates in near real time", "Breakdown per concept not just subject", "Trend lines show improvement velocity"]}
+          className="col-span-2"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Subject Mastery Progress</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {Object.entries(child.masteryScores).map(([subject, score]) => (
+                  <div key={subject}>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="font-medium">{subject}</span>
+                      <span className="text-gray-500">{score}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2.5">
+                      <div 
+                        className={`h-2.5 rounded-full ${getProgressColor(score)}`} 
+                        style={{ width: `${score}%` }}
+                      ></div>
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div 
-                      className={`h-2.5 rounded-full ${getProgressColor(score)}`} 
-                      style={{ width: `${score}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </FeatureTooltip>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
@@ -127,27 +136,34 @@ export function ParentDashboard() {
         </Card>
 
         <div className="col-span-1 space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center"><Bell className="h-5 w-5 mr-2 text-red-500" /> Recent Alerts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {alerts.map(alert => (
-                  <div key={alert.id} className={`p-3 rounded-lg border ${alert.status === 'unread' ? 'bg-red-50 border-red-100' : 'bg-gray-50 border-gray-100'}`}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className={`text-xs font-semibold uppercase ${alert.type === 'risk' ? 'text-red-600' : 'text-orange-600'}`}>
-                        {alert.type}
-                      </span>
-                      <span className="text-xs text-gray-500">{alert.date}</span>
+          <FeatureTooltip
+            title="Proactive Parent Alerts"
+            description="The full alerts engine monitors attendance drops, assessment failures, risk score changes and teacher flags — sending instant notifications via app, SMS, and email."
+            benefits={["Multi-channel: app, SMS, and email", "Configurable alert thresholds per parent", "Two-way communication with teachers built in"]}
+            align="right"
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center"><Bell className="h-5 w-5 mr-2 text-red-500" /> Recent Alerts</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {alerts.map(alert => (
+                    <div key={alert.id} className={`p-3 rounded-lg border ${alert.status === 'unread' ? 'bg-red-50 border-red-100' : 'bg-gray-50 border-gray-100'}`}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className={`text-xs font-semibold uppercase ${alert.type === 'risk' ? 'text-red-600' : 'text-orange-600'}`}>
+                          {alert.type}
+                        </span>
+                        <span className="text-xs text-gray-500">{alert.date}</span>
+                      </div>
+                      <p className="text-sm text-gray-800">{alert.message}</p>
                     </div>
-                    <p className="text-sm text-gray-800">{alert.message}</p>
-                  </div>
-                ))}
-                {alerts.length === 0 && <p className="text-sm text-gray-500 text-center py-4">No recent alerts.</p>}
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                  {alerts.length === 0 && <p className="text-sm text-gray-500 text-center py-4">No recent alerts.</p>}
+                </div>
+              </CardContent>
+            </Card>
+          </FeatureTooltip>
 
           <Card className={child.riskLevel === 'on-track' ? 'bg-green-50 border-green-200' : 'bg-amber-50 border-amber-200'}>
             <CardContent className="p-4 flex items-start gap-3">
