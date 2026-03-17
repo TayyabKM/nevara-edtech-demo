@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import { Send, Bot, User, Loader2 } from "lucide-react"
+import ReactMarkdown from "react-markdown"
 
 export function StudentChatbot() {
   const [messages, setMessages] = useState([
@@ -131,7 +132,15 @@ export function StudentChatbot() {
                       : 'bg-white text-gray-800 border-l-4 border-l-[#006B6B] rounded-bl-sm border border-gray-100'
                   }`}
                 >
-                  <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                  {msg.role === 'assistant' ? (
+                    <div className="whitespace-pre-wrap leading-relaxed prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:bg-gray-100 prose-pre:text-gray-800">
+                      <ReactMarkdown>
+                        {msg.content}
+                      </ReactMarkdown>
+                    </div>
+                  ) : (
+                    <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                  )}
                 </div>
                 <span className="text-xs text-gray-400 mt-1 px-1">{msg.timestamp}</span>
               </div>
