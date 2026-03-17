@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { StatCard } from "@/src/components/shared/StatCard"
 import { RiskBadge } from "@/src/components/shared/RiskBadge"
 import { 
-  Building, Users, GraduationCap, TrendingUp, BookOpen, Clock, AlertTriangle, Activity 
+  Building, Users, GraduationCap, TrendingUp, BookOpen, Clock, AlertTriangle, Activity, DollarSign, BrainCircuit
 } from "lucide-react"
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Cell,
@@ -131,15 +131,21 @@ export function ExecutiveDashboard() {
       </div>
 
       {/* Row 1 — Executive Snapshot */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
         <StatCard title="Total Campuses" value="47" icon={Building} />
         <StatCard title="Total Students" value="20,400" icon={Users} />
         <StatCard title="Total Teachers" value="890" icon={GraduationCap} />
         <StatCard title="Admission Growth" value="+14% YoY" icon={TrendingUp} className="border-l-4 border-teal-600 bg-teal-50" />
+      </div>
+      
+      {/* Row 2 — Institutional Health */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
         <StatCard title="Average Academic Score" value="76%" icon={BookOpen} />
         <StatCard title="Attendance Rate" value="88%" icon={Clock} />
         <StatCard title="At-Risk Students" value="342" icon={AlertTriangle} className="border-l-4 border-red-500 bg-red-50" />
         <StatCard title="Institutional Health Score" value="81/100" icon={Activity} className="border-l-4 border-green-500 bg-green-50" />
+        <StatCard title="Fee Collection Rate" value="94%" icon={DollarSign} className="border-l-4 border-emerald-500 bg-emerald-50" />
+        <StatCard title="AI Assessments This Month" value="1,247" icon={BrainCircuit} description="Avg turnaround 4.2 sec" className="border-l-4 border-teal-500 bg-teal-50" />
       </div>
 
       {/* Row 2 — Academic Insights */}
@@ -253,8 +259,57 @@ export function ExecutiveDashboard() {
       </div>
 
       {/* Row 4 — Admissions & Enrollment */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Component 1 — Monthly Admissions Trend */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        {/* Component 1 — Admission Funnel */}
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900">Admission Funnel</h3>
+            <p className="text-sm text-gray-500 mb-6">Current Academic Session</p>
+          </div>
+          <div className="flex-1 flex flex-col justify-center space-y-2">
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="text-sm font-medium text-gray-700 w-36 text-right shrink-0">Applications Received</div>
+                <div className="flex-1 flex justify-center">
+                  <div className="h-8 bg-[#006B6B] rounded-sm w-full" style={{ opacity: 1 }}></div>
+                </div>
+                <div className="text-sm font-bold text-gray-900 w-12 shrink-0">3,847</div>
+              </div>
+              <div className="text-[11px] text-gray-400 text-center mt-1">↓ 75.6% conversion</div>
+            </div>
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="text-sm font-medium text-gray-700 w-36 text-right shrink-0">Interviews Conducted</div>
+                <div className="flex-1 flex justify-center">
+                  <div className="h-8 bg-[#006B6B] rounded-sm w-[76%]" style={{ opacity: 0.85 }}></div>
+                </div>
+                <div className="text-sm font-bold text-gray-900 w-12 shrink-0">2,910</div>
+              </div>
+              <div className="text-[11px] text-gray-400 text-center mt-1">↓ 80.4% conversion</div>
+            </div>
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="text-sm font-medium text-gray-700 w-36 text-right shrink-0">Offers Made</div>
+                <div className="flex-1 flex justify-center">
+                  <div className="h-8 bg-[#006B6B] rounded-sm w-[61%]" style={{ opacity: 0.70 }}></div>
+                </div>
+                <div className="text-sm font-bold text-gray-900 w-12 shrink-0">2,341</div>
+              </div>
+              <div className="text-[11px] text-gray-400 text-center mt-1">↓ 89.9% conversion</div>
+            </div>
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="text-sm font-medium text-gray-700 w-36 text-right shrink-0">Enrolled</div>
+                <div className="flex-1 flex justify-center">
+                  <div className="h-8 bg-[#006B6B] rounded-sm w-[55%]" style={{ opacity: 0.55 }}></div>
+                </div>
+                <div className="text-sm font-bold text-gray-900 w-12 shrink-0">2,104</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Component 2 — Monthly Admissions Trend */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Monthly Admissions Trend</h3>
           <div className="h-72">
