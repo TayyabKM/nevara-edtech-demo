@@ -32,7 +32,7 @@ const roleLinks = {
     { name: "Assessments", href: "/student/assessments", icon: FileText },
     { name: "Mock Exams", href: "/student/mock-exams", icon: FileText, comingSoon: true },
     { name: "My Portfolio", href: "/student/portfolio", icon: Briefcase, comingSoon: true },
-    { name: "Chatbot", href: "/student/chatbot", icon: MessageSquare, comingSoon: true },
+    { name: "Chatbot", href: "/student/chatbot", icon: MessageSquare },
     { name: "Public Speaking Lab", href: "/student/public-speaking", icon: Mic, comingSoon: true },
     { name: "Billionaire Bootcamp", href: "/student/billionaire-bootcamp", icon: Rocket, comingSoon: true },
   ],
