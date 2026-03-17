@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { cn } from "@/src/lib/utils"
 import { schoolConfig } from "@/school.config"
@@ -19,7 +19,9 @@ import {
   Rocket,
   Gamepad2,
   BookMarked,
-  ClipboardCheck
+  ClipboardCheck,
+  PanelLeftClose,
+  PanelLeftOpen
 } from "lucide-react"
 
 const roleLinks = {
@@ -70,11 +72,19 @@ const roleLinks = {
 export function Sidebar({ role }) {
   const location = useLocation()
   const links = roleLinks[role] || []
+  const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <div className="flex h-full w-64 flex-col border-r bg-[#006B6B]">
-      <div className="flex h-16 items-center border-b border-white/10 px-6">
-        <span className="font-bold text-white text-xl">{schoolConfig.shortName}</span>
+    <div className={cn("flex h-full flex-col border-r bg-[#006B6B] transition-all duration-300", isCollapsed ? "w-16" : "w-64")}>
+      <div className={cn("flex h-16 items-center border-b border-white/10", isCollapsed ? "justify-center px-2" : "px-6 justify-between")}>
+        {!isCollapsed && <span className="font-bold text-white text-xl truncate">{schoolConfig.shortName}</span>}
+        <button 
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="p-1 text-white hover:bg-white/10 rounded-md shrink-0"
+          title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+        >
+          {isCollapsed ? <PanelLeftOpen className="h-5 w-5" /> : <PanelLeftClose className="h-5 w-5" />}
+        </button>
       </div>
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="grid gap-1 px-2">
@@ -84,16 +94,18 @@ export function Sidebar({ role }) {
               <Link
                 key={link.name}
                 to={link.comingSoon ? `/coming-soon?feature=${encodeURIComponent(link.name)}` : link.href}
+                title={isCollapsed ? link.name : undefined}
                 className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all",
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all group",
                   isActive
                     ? "bg-[#00A693] text-white"
-                    : "text-gray-300 hover:bg-white/10 hover:text-white"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white",
+                  isCollapsed ? "justify-center px-0" : ""
                 )}
               >
-                <link.icon className="h-4 w-4" />
-                {link.name}
-                {link.comingSoon && (
+                <link.icon className={cn("shrink-0", isCollapsed ? "h-5 w-5" : "h-4 w-4")} />
+                {!isCollapsed && <span>{link.name}</span>}
+                {!isCollapsed && link.comingSoon && (
                   <span className="ml-auto text-[10px] uppercase tracking-wider bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">
                     Soon
                   </span>
