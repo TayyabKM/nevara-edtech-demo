@@ -6,6 +6,7 @@ import { LoginPage } from "./pages/LoginPage"
 import { StudentDashboard } from "./pages/StudentDashboard"
 import { StudentSubjects } from "./pages/student/Subjects"
 import { StudentAssessments } from "./pages/student/Assessments"
+import { StudentChatbot } from "./pages/student/Chatbot"
 import { TeacherDashboard } from "./pages/TeacherDashboard"
 import { TeacherClasses } from "./pages/teacher/Classes"
 import { TeacherReports } from "./pages/teacher/Reports"
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="student/dashboard" element={<StudentDashboard />} />
           <Route path="student/subjects" element={<StudentSubjects />} />
           <Route path="student/assessments" element={<StudentAssessments />} />
+          <Route path="student/chatbot" element={<StudentChatbot />} />
           
           <Route path="teacher/dashboard" element={<TeacherDashboard />} />
           <Route path="teacher/classes" element={<TeacherClasses />} />

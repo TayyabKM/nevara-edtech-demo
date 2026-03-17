@@ -65,6 +65,62 @@ Provide your assessment in the following JSON format only, no other text:
         res.status(500).json({ error: error.message || 'Internal server error' });
     }
 });
+app.post('/api/chat', async (req, res) => {
+    try {
+        const { message, history } = req.body;
+        const apiKey = process.env.GEMINI_API_KEY;
+
+        if (!apiKey) {
+            return res.status(500).json({ error: 'GEMINI_API_KEY is not set in server environment' });
+        }
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+
+        // Construct contents array for Gemini
+        // Gemini expects: [ { role: "user" | "model", parts: [{ text: "..." }] } ]
+        
+        const systemPromptMsg = {
+            role: "user",
+            parts: [{ text: `You are EduOS AI Assistant, an academic support chatbot for Roots International Schools & Colleges students in Pakistan. You help students understand their curriculum subjects including Mathematics, Physics, Chemistry, Biology, English, Computer Science, Urdu, and Islamiat. You explain concepts clearly, suggest revision strategies, and encourage students. You are friendly, patient, and encouraging. Keep responses concise — 3 to 5 sentences maximum unless the student asks for detailed explanation. Do not discuss topics unrelated to academics or the school. If asked about non-academic topics, politely redirect to studies.` }]
+        };
+
+        const systemAckMsg = {
+             role: "model",
+             parts: [{ text: "Understood. I am the EduOS AI Assistant and will follow these guidelines." }]
+        }
+
+        const formattedHistory = (history || []).map(msg => ({
+            role: msg.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: msg.content }]
+        }));
+
+        const contents = [
+            systemPromptMsg,
+            systemAckMsg,
+            ...formattedHistory,
+            { role: "user", parts: [{ text: message }] }
+        ];
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Gemini API error: ${response.status} - ${errorText}`);
+        }
+
+        const data = await response.json();
+        const text = data.candidates[0].content.parts[0].text;
+
+        res.json({ reply: text });
+    } catch (error) {
+        console.error("Error in /api/chat:", error);
+        res.status(500).json({ error: error.message || 'Internal server error' });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
