@@ -12,12 +12,12 @@ import {
 } from "recharts"
 
 const campusPerformanceData = [
-  { name: "Bahria Campus", score: 84, fill: "#006B6B" },
-  { name: "DHA Phase 5", score: 81, fill: "#006B6B" },
-  { name: "Gulberg Campus", score: 79, fill: "#006B6B" },
-  { name: "F-8 Islamabad", score: 77, fill: "#006B6B" },
-  { name: "Model Town", score: 74, fill: "#006B6B" },
-  { name: "DHA Phase 6", score: 68, fill: "#ef4444" },
+  { name: "Wellington Campus", score: 84, fill: "#006B6B" },
+  { name: "Askari Campus", score: 81, fill: "#006B6B" },
+  { name: "Claremont Campus", score: 79, fill: "#006B6B" },
+  { name: "Richmond Campus", score: 77, fill: "#006B6B" },
+  { name: "Kingswood Campus", score: 74, fill: "#006B6B" },
+  { name: "Hamilton Campus", score: 68, fill: "#ef4444" },
 ]
 
 const subjectPerformanceData = [
@@ -51,24 +51,23 @@ const admissionsData = [
 ]
 
 const regionEnrollmentData = [
-  { region: "Islamabad Region", students: 6200 },
-  { region: "Lahore Region", students: 5800 },
-  { region: "Rawalpindi Region", students: 4100 },
-  { region: "Karachi Region", students: 2400 },
-  { region: "Other Regions", students: 1900 },
+  { region: "Northern Region", students: 12400 },
+  { region: "Central Region", students: 4200 },
+  { region: "Southern Region", students: 2800 },
+  { region: "AJK & KPK", students: 1000 },
 ]
 
 const riskTableData = [
-  { campus: "DHA Phase 6", academic: "68%", attendance: "79%", fee: "82%", risk: "at-risk" },
-  { campus: "Model Town", academic: "74%", attendance: "83%", fee: "71%", risk: "needs-attention" },
-  { campus: "North Karachi", academic: "71%", attendance: "81%", fee: "68%", risk: "needs-attention" },
-  { campus: "Rawalpindi Saddar", academic: "76%", attendance: "77%", fee: "74%", risk: "needs-attention" },
+  { campus: "Hamilton Campus", academic: "68%", attendance: "79%", fee: "82%", risk: "at-risk" },
+  { campus: "Sevenoaks Campus", academic: "74%", attendance: "83%", fee: "71%", risk: "needs-attention" },
+  { campus: "Monash Campus", academic: "71%", attendance: "81%", fee: "68%", risk: "needs-attention" },
+  { campus: "Rawal Campus", academic: "76%", attendance: "77%", fee: "74%", risk: "needs-attention" },
 ]
 
 const aiInsights = [
   {
     icon: "⚠️",
-    title: `"DHA Phase 6 Math performance down 12% this month"`,
+    title: `"Hamilton Campus Math performance down 12% this month"`,
     detail: "Recommend targeted intervention for Grade 9 and 10 cohorts",
     colorClass: "border-l-red-500",
   },
@@ -80,8 +79,8 @@ const aiInsights = [
   },
   {
     icon: "🏆",
-    title: `"Bahria Campus has highest admission growth this cycle"`,
-    detail: "23% above network average, recommend capacity review",
+    title: `"Wellington Campus has highest academic score this cycle"`,
+    detail: "84% average — 23% above network average",
     colorClass: "border-l-emerald-500",
   },
   {
@@ -133,8 +132,8 @@ export function ExecutiveDashboard() {
 
       {/* Row 1 — Executive Snapshot */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <StatCard title="Total Campuses" value="47" icon={Building} />
-        <StatCard title="Total Students" value="20,400" icon={Users} />
+        <StatCard title="Total Campuses" value="20" description="+ 1 upcoming in Gujranwala" icon={Building} />
+        <StatCard title="Total Students" value="20,000" icon={Users} />
         <StatCard title="Total Teachers" value="890" icon={GraduationCap} />
         <StatCard title="Admission Growth" value="+14% YoY" icon={TrendingUp} className="border-l-4 border-teal-600 bg-teal-50" />
       </div>
