@@ -24,6 +24,10 @@ import { ExecutiveDashboard } from "./pages/admin/ExecutiveDashboard"
 import { AdminData } from "./pages/admin/Data"
 import { AdminSystem } from "./pages/admin/System"
 import { ComingSoonPage } from "./pages/ComingSoonPage"
+import { GrowthReport } from "@/src/pages/admin/reports/GrowthReport"
+import { AcademicReport } from "@/src/pages/admin/reports/AcademicReport"
+import { FinancialReport } from "@/src/pages/admin/reports/FinancialReport"
+import { AdmissionsReport } from "@/src/pages/admin/reports/AdmissionsReport"
 
 export default function App() {
   return (
@@ -55,6 +59,10 @@ export default function App() {
           
           <Route path="admin" element={<AdminPanel />} />
           <Route path="admin/executive" element={<ExecutiveDashboard />} />
+          <Route path="admin/reports/growth" element={<GrowthReport />} />
+          <Route path="admin/reports/academic" element={<AcademicReport />} />
+          <Route path="admin/reports/financial" element={<FinancialReport />} />
+          <Route path="admin/reports/admissions" element={<AdmissionsReport />} />
           <Route path="admin/data" element={<AdminData />} />
           <Route path="admin/system" element={<AdminSystem />} />
           
