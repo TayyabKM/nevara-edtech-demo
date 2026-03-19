@@ -21,7 +21,9 @@ import {
   BookMarked,
   ClipboardCheck,
   PanelLeftClose,
-  PanelLeftOpen
+  PanelLeftOpen,
+  TrendingUp,
+  DollarSign
 } from "lucide-react"
 
 const roleLinks = {
@@ -61,6 +63,10 @@ const roleLinks = {
   ],
   admin: [
     { name: "Executive Dashboard", href: "/admin/executive", icon: LayoutDashboard },
+    { name: "Growth Report", href: "/admin/reports/growth", icon: TrendingUp },
+    { name: "Academic Report", href: "/admin/reports/academic", icon: BookOpen },
+    { name: "Financial Report", href: "/admin/reports/financial", icon: DollarSign },
+    { name: "Admissions Report", href: "/admin/reports/admissions", icon: Users },
     { name: "Exam Board Compliance", href: "/admin/exam-board", icon: ClipboardCheck, comingSoon: true },
     { name: "Branding", href: "/admin", icon: Settings },
     { name: "Users", href: "/admin/users", icon: Users, comingSoon: true },
