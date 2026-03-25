@@ -47,7 +47,8 @@ export function StudentChatbot() {
       // Send the last 6 messages to maintain context
       const history = messages.slice(-6).map(m => ({ role: m.role, content: m.content }))
       
-      const response = await fetch("http://localhost:3001/api/chat", {
+      const baseUrl = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${baseUrl}/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

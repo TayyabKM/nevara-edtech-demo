@@ -28,11 +28,13 @@ import { GrowthReport } from "@/src/pages/admin/reports/GrowthReport"
 import { AcademicReport } from "@/src/pages/admin/reports/AcademicReport"
 import { FinancialReport } from "@/src/pages/admin/reports/FinancialReport"
 import { AdmissionsReport } from "@/src/pages/admin/reports/AdmissionsReport"
+import { OverviewPage } from "@/src/pages/OverviewPage"
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="overview" element={<OverviewPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
           <Route path="login" element={<LoginPage />} />

@@ -10,23 +10,14 @@ import subjectsData from "@/src/data/subjects.json"
 import { Users, AlertTriangle, FileText, CheckCircle, GraduationCap, Building } from "lucide-react"
 
 export function CampusDashboard() {
-  const totalStudents = studentsData.length
-  const atRiskCount = studentsData.filter(s => s.riskLevel !== "on-track").length
-  
-  let totalMastery = 0
-  let masteryCount = 0
-  studentsData.forEach(s => {
-    Object.values(s.masteryScores).forEach(score => {
-      totalMastery += score
-      masteryCount++
-    })
-  })
-  const campusAverageMastery = Math.round(totalMastery / masteryCount)
+  const totalStudents = 1240
+  const atRiskCount = 104
+  const campusAverageMastery = 84
 
   const riskDistribution = [
-    { name: 'On Track', value: studentsData.filter(s => s.riskLevel === 'on-track').length, color: '#22c55e' },
-    { name: 'Needs Attention', value: studentsData.filter(s => s.riskLevel === 'needs-attention').length, color: '#eab308' },
-    { name: 'At Risk', value: studentsData.filter(s => s.riskLevel === 'at-risk').length, color: '#ef4444' },
+    { name: 'On Track', value: 924, color: '#22c55e' },
+    { name: 'Needs Attention', value: 212, color: '#eab308' },
+    { name: 'At Risk', value: 104, color: '#ef4444' },
   ]
 
   const topAtRiskStudents = studentsData
@@ -59,11 +50,11 @@ export function CampusDashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        <StatCard title="Total Students" value={totalStudents} icon={Users} />
-        <StatCard title="At-Risk Count" value={atRiskCount} icon={AlertTriangle} />
-        <StatCard title="Campus Avg Mastery" value={`${campusAverageMastery}%`} icon={GraduationCap} />
-        <StatCard title="Assessments This Month" value="142" icon={FileText} />
-        <StatCard title="Teacher Count" value="12" icon={Building} />
+        <StatCard title="Total Students" value="1,240" icon={Users} />
+        <StatCard title="At-Risk Count" value="104" icon={AlertTriangle} />
+        <StatCard title="Campus Avg Mastery" value="84%" icon={GraduationCap} />
+        <StatCard title="Assessments This Month" value="1,420" icon={FileText} />
+        <StatCard title="Teacher Count" value="68" icon={Building} />
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
